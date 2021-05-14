@@ -8,7 +8,6 @@ import { addContact, removeContact, updateContact} from './actions/contacts';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import validator from 'validator' 
-
 // const userEmail = validator.isEmail('djdjdkdkd.com');
 // console.log('test',userEmail);
 // const  validatePhoneNumber = (elementValue) => {
@@ -54,8 +53,8 @@ const store = configureStore();
 // store.dispatch(addContact({name:'moussa',email:'moussa@gmail.com', message:'this is great', city:'bronx',phone:238839483}))
 
 // store.dispatch(removeContact({id: "80a12c6b-e862-4ffd-bffc-e7d87a5ceb85"}))
-const state = store.getState();
-console.log(state)
+// const state = store.getState();
+// console.log(state)
 
 const farm = (
     <Provider store={store}>

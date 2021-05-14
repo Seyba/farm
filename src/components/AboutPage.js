@@ -1,13 +1,11 @@
 import React from 'react';
-import AboutPart1 from './AboutPart1';
-import AboutPart2 from './AboutPart2';
 
-const AboutPage = () =>
-(
-    <div> 
-        <AboutPart1 />
-        <AboutPart2/>
-    </div>
-)
+const AboutPage = () => {
+    return(
+        <div> 
+            <h1>About us</h1>
+        </div>
+    )
+}
 
-export default AboutPage
+export default AboutPage;

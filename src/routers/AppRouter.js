@@ -23,7 +23,7 @@ const AppRouter = () => (
           <Route path="/order/create" component={AddOrderPage} />
           <Route path="/order/edit/:id" component={EditOrderPage} />
           <Route path="/contact" component={ContactPage} exact={true}/>
-          <Route path="/about" component={AboutPage}/>
+          <Route path="/about" component={AboutPage} exact={true}/>
           <Route path="/products" component={ProductsPage} />
           <Route path="/contact/reviews" component={RenderContact} />
           <Route component={NotFoundPage} />
