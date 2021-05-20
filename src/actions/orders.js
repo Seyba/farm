@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import {dataBaseOrders} from '../firebase/firebase';
 
 // ADD ORDER
 export const addOrder = ({
@@ -24,7 +25,39 @@ export const addOrder = ({
         quantity
     }
 })
+export const placeOrder = (orderData = {}) => {
+    return (dispatch) => {
+        const {
+            name,
+            email,
+            address,
+            phone,
+            price,
+            description,
+            createdAt,
+            quantity
+        } = orderData;
 
+        const order = {
+            name, 
+            email, 
+            address, 
+            phone, 
+            price, 
+            description,
+            createdAt,
+            quantity
+        }
+
+        dataBaseOrders.push(order).then((ref) => {
+            dispatch(addOrder({
+                id: ref.key,
+                ...order
+            }))
+        })
+
+    }
+}
 // REMOVE ORDER
 export const removeOrder = ({id} = {}) =>({
     type: 'REMOVE_ORDER',

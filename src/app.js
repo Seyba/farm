@@ -7,6 +7,7 @@ import { addOrder, removeOrder, updateOrder } from './actions/orders';
 import { addContact, removeContact, updateContact} from './actions/contacts';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
+import './firebase/firebase';
 import validator from 'validator' 
 // const userEmail = validator.isEmail('djdjdkdkd.com');
 // console.log('test',userEmail);
