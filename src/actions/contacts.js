@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import {database, databaseReview} from '../firebase/firebase';
 
 // ADD CONTACT
 export const addContact = ({
@@ -35,3 +36,40 @@ export const setContacts = (contacts) => ({
     type: 'SET_CONTACTS',
     contacts
 })
+
+export const postReview = (reviewData = {}) => {
+    return (dispatch) => {
+        const {
+            name,
+            email,
+            city, 
+            message
+        } = reviewData
+
+        const review = {
+            name, email, city, message
+        }
+
+        databaseReview.push(review).then((ref) => {
+            dispatch(addContact({
+                id: ref.key,
+                ...review
+            }))
+        })
+    }
+}
+
+export const fetchReviews = () => {
+    return (dispatch) => {
+        return database.ref('data/reviews').once('value').then((snaptshot) => {
+            const reviews = []
+            snaptshot.forEach((childSnapshot) => {
+                reviews.push({
+                    id: childSnapshot.key,
+                    ...childSnapshot.val()
+                })
+            })
+            dispatch(setContacts(reviews))
+        })
+    }
+}

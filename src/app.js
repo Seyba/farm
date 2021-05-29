@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import AppRouter from './routers/AppRouter';
 import configureStore from './stores/configureStore';
 import { fetchOrders, removeOrder, updateOrder } from './actions/orders';
-import { addContact, removeContact, updateContact} from './actions/contacts';
+import { addContact, fetchReviews, removeContact, updateContact} from './actions/contacts';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import './firebase/firebase';

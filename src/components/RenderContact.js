@@ -8,7 +8,7 @@ const RenderContact = props => {
         <div>
             <h2>What customers say about us.</h2>
             {userPosts.length < 1 && <p>No reviews yet!</p>}
-            {userPosts.map((msg) => <div key={msg.id}>{msg.message}</div>)}
+            {userPosts.map((msg) => <div key={msg.id}>{msg.message} | {msg.name}</div>)}
         </div>
     )
 }

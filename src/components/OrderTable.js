@@ -22,15 +22,6 @@ class OrderTable extends Component{
         return(
             
             <div>
-                
-                {/*{
-                    this.props.orders.length > 0 && <table>
-                    <tbody>
-                        <tr>{this.renderHeader()}</tr>
-                        <OrderData />
-                    </tbody>
-                </table>
-                }*/}
                 {
                     this.props.orders.length > 0 ? 
                     <table>

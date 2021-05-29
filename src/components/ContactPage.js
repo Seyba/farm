@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ContactForm from './ContactForm';
-import { addContact} from '../actions/contacts';
+import { postReview} from '../actions/contacts';
 import { Link } from 'react-router-dom';
 
 const ContactPage = props => {
@@ -10,7 +10,7 @@ const ContactPage = props => {
       <h1>Contact Us</h1>
       <ContactForm 
         onSubmit={(contact) => {
-          props.dispatch(addContact(contact));
+          props.dispatch(postReview(contact));
           props.history.push('/');
         }}
       />

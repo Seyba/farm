@@ -12,6 +12,7 @@ import RenderContact from '../components/RenderContact';
 import AddOrderPage from '../components/AddOrderPage';
 import ProductsPage from '../components/ProductsPage';
 import Footer from '../components/Footer';
+import RenderReviews from '../components/RenderReviews';
 
 const AppRouter = () => (
     <BrowserRouter>
@@ -25,7 +26,7 @@ const AppRouter = () => (
           <Route path="/contact" component={ContactPage} exact={true}/>
           <Route path="/about" component={AboutPage} exact={true}/>
           <Route path="/products" component={ProductsPage} />
-          <Route path="/contact/reviews" component={RenderContact} />
+          <Route path="/contact/reviews" component={RenderReviews} />
           <Route component={NotFoundPage} />
         </Switch>
         <Footer/>

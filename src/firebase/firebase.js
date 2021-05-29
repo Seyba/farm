@@ -17,11 +17,11 @@ const database = firebase.database();
 const storage = firebase.storage();
 
 const dataBaseOrders = firebase.database().ref('data/orders');
-const reviews = firebase.database().ref('data/reviews');
+const databaseReview = firebase.database().ref('data/reviews');
 const gsReference = storage.refFromURL('gs://soumppoukaffofarm-4fa54.appspot.com/images/eggplant.jpg');
 
 
-export {firebase, database, dataBaseOrders, storage}
+export {firebase, database, dataBaseOrders, databaseReview, storage}
 // orders.push({
 //     description:"whole lamb",
 //     quantity: 2,
