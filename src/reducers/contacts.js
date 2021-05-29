@@ -19,6 +19,8 @@ const contactReducer = (state = contactReducerDefaultState, action) => {
                     return contact;
                 }
             });
+        case 'SET_CONTACTS':
+            return action.contacts;
         default:
             return state;
     }

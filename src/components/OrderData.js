@@ -9,13 +9,13 @@ const OrderData = ({id, name, email, address, phone, description, price, created
     return(
         <tr>
             <td>{id}</td>
-            <td>{name}</td>
-            <td>{email}</td>
             <td>{address}</td>
+            <td>{date}</td>
+            <td>{description}</td>
+            <td>{email}</td>
+            <td>{name}</td>
             <td>{phone}</td>
             <td>{formattedPrice}</td>
-            <td>{description}</td>
-            <td>{date}</td>
             <td>{quantity}</td>
         </tr>
     )

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import AppRouter from './routers/AppRouter';
 import configureStore from './stores/configureStore';
-import { addOrder, removeOrder, updateOrder } from './actions/orders';
+import { fetchOrders, removeOrder, updateOrder } from './actions/orders';
 import { addContact, removeContact, updateContact} from './actions/contacts';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
@@ -62,4 +62,8 @@ const farm = (
         <AppRouter />
     </Provider>
 )
-ReactDOM.render(farm, document.getElementById('root'))
+ReactDOM.render(<p>Loading...</p>, document.getElementById('root'))
+
+store.dispatch(fetchOrders()).then(() => {
+    ReactDOM.render(farm, document.getElementById('root'))
+}).catch((e) => console.log('Oops something went wrong!', e))

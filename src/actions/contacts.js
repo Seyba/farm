@@ -29,3 +29,9 @@ export const editContact = (id, updates) => ({
     id,
     updates
 })
+
+// SET CONTACT
+export const setContacts = (contacts) => ({
+    type: 'SET_CONTACTS',
+    contacts
+})

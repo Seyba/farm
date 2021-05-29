@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import {dataBaseOrders} from '../firebase/firebase';
+import {database, dataBaseOrders} from '../firebase/firebase';
 
 // ADD ORDER
 export const addOrder = ({
@@ -58,15 +58,38 @@ export const placeOrder = (orderData = {}) => {
 
     }
 }
+
 // REMOVE ORDER
 export const removeOrder = ({id} = {}) =>({
     type: 'REMOVE_ORDER',
     id
 })
 
+// SET ORDER 
+export const setOrders = (orders) => ({
+    type: 'SET_ORDERS',
+    orders
+})
 // EDIT ORDER
 export const editOrder = (id, updates) => ({
     type: 'EDIT_ORDER',
     id,
     updates
 })
+
+// FETCH ORDERS
+export const fetchOrders = () => {
+    return (dispatch) => {
+        return database.ref('data/orders').once('value').then((snapshot) => {
+            const orderData = [];
+
+            snapshot.forEach((childSnapshot) => {
+                orderData.push({
+                    id: childSnapshot.key,
+                    ...childSnapshot.val()
+                })
+            })
+            dispatch(setOrders(orderData));
+        })
+    }
+}
