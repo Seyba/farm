@@ -26,7 +26,9 @@ class  RenderReviews extends React.Component{
         const dataList = this.state.reviews
         return (
             <div>
+                <h2>What customers say about us.</h2>
                 reviews: {this.state.reviews.length}
+                {dataList.length < 1 && <p>No reviews yet!</p>}
                 {dataList.map((item) => 
                     <div key={item.id}>
                         {item.name} {" "} {item.message} {" "} {item.city}
