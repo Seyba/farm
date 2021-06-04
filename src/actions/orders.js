@@ -65,6 +65,14 @@ export const removeOrder = ({id} = {}) =>({
     id
 })
 
+export const deleteOrder = ({id} = {}) => {
+    return (dispatch) => {
+        return database.ref(`data/orders/${id}`).remove().then(() => {
+            dispatch(removeOrder({id}));
+        })
+    }
+}
+
 // SET ORDER 
 export const setOrders = (orders) => ({
     type: 'SET_ORDERS',
@@ -76,6 +84,13 @@ export const editOrder = (id, updates) => ({
     id,
     updates
 })
+export const modifyOrder = (id, updates) => {
+    return (dispatch) => {
+        return database.ref(`data/orders/${id}`).update(updates).then(() => {
+            dispatch(editOrder(id, updates))
+        })
+    }
+}
 
 // FETCH ORDERS
 export const fetchOrders = () => {
@@ -94,11 +109,3 @@ export const fetchOrders = () => {
     }
 }
 
-export const deleteOrder = ({id} = {}) => {
-    return (dispatch) => {
-        return database.ref(`data/orders/${id}`).remove().then(() => {
-            dispatch(removeOrder({id}));
-        })
-    }
-
-}

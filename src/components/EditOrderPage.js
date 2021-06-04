@@ -1,12 +1,12 @@
 import React from 'react';
 import OrderForm from './OrderForm';
 import { connect } from 'react-redux';
-import { editOrder, deleteOrder, removeOrder } from '../actions/orders';
+import { modifyOrder, deleteOrder, removeOrder } from '../actions/orders';
 
 export class EditOrderPage extends React.Component{
 
     onSubmit = (order) => {
-        this.props.editOrder(this.props.order.id, order);
+        this.props.modifyOrder(this.props.order.id, order);
         this.props.history.push('/');
     }
 
@@ -35,7 +35,7 @@ const mapStateToProps = (state, props) => ({
     order: state.orders.find(order => order.id === props.match.params.id)
 })
 const mapDispatchToProps = (dispatch, props) =>({
-    editOrder: (id, order) => dispatch(editOrder(id, order)),
+    modifyOrder: (id, order) => dispatch(modifyOrder(id, order)),
     deleteOrder: (data) => dispatch(deleteOrder(data))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(EditOrderPage);
