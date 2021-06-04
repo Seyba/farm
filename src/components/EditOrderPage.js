@@ -1,32 +1,41 @@
 import React from 'react';
 import OrderForm from './OrderForm';
 import { connect } from 'react-redux';
-import { editOrder, removeOrder } from '../actions/orders';
+import { editOrder, deleteOrder, removeOrder } from '../actions/orders';
 
-const EditOrderPage = props => {
-    return(
-        <div>
-            <OrderForm 
-                order={props.order}
-                onSubmit={
-                    (order) => {
-                        props.dispatch(editOrder(props.order.id, order));
-                        props.history.push('/');
-                    }
-                }
-            />
-            <button
-                onClick={() => {
-                    props.dispatch(removeOrder({id: props.order.id}));
-                    props.history.push('/');
-                }}
-            >
-                Delete Order
-            </button>
-        </div>
-    )
+export class EditOrderPage extends React.Component{
+
+    onSubmit = (order) => {
+        this.props.editOrder(this.props.order.id, order);
+        this.props.history.push('/');
+    }
+
+    onRemove = () => {
+        this.props.deleteOrder({id: this.props.order.id});
+        this.props.history.push('/');
+    }
+    render(){
+        return (
+            <div>
+                <OrderForm 
+                    order={this.props.order}
+                    onSubmit={this.onSubmit}
+                />
+                <button
+                    onClick={this.onRemove}
+                >
+                    Delete Order
+                </button>
+            </div>
+        )
+    }
+        
 }
 const mapStateToProps = (state, props) => ({
     order: state.orders.find(order => order.id === props.match.params.id)
 })
-export default connect(mapStateToProps)(EditOrderPage);
+const mapDispatchToProps = (dispatch, props) =>({
+    editOrder: (id, order) => dispatch(editOrder(id, order)),
+    deleteOrder: (data) => dispatch(deleteOrder(data))
+})
+export default connect(mapStateToProps, mapDispatchToProps)(EditOrderPage);

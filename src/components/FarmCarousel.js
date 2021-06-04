@@ -3,7 +3,7 @@ import { UncontrolledCarousel } from 'reactstrap';
 
 const FarmCarousel = () => (
     <div>
-        <h4>Carousel</h4>
+        <h4>Quality Food Source</h4>
     </div>
 )
 // const items = [
